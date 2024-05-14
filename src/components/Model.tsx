@@ -12,6 +12,10 @@ import { models, sizes } from "~/constants";
 import { animateWithGsapTimeline } from "~/utils/animations";
 
 export default function Model() {
+  const [_document, setDocument] = React.useState<Document | null>();
+  useEffect(() => {
+    setDocument(document);
+  }, []);
   const [size, setSize] = useState<string>("small");
   const [model, setModel] = useState({
     title: "iPhone 15 Pro in Natural Titanium",
@@ -87,19 +91,21 @@ export default function Model() {
               item={model}
               size={size}
             />
-            <Canvas
-              className="h-full w-full"
-              style={{
-                position: "fixed",
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-              }}
-              eventSource={document.body!}
-            >
-              <View.Port />
-            </Canvas>
+            {!!_document && (
+              <Canvas
+                className="h-full w-full"
+                style={{
+                  position: "fixed",
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                }}
+                eventSource={_document!.body}
+              >
+                <View.Port />
+              </Canvas>
+            )}
           </div>
           <div className="mx-auto w-full ">
             <p className="mb-5 text-center">{model.title}</p>
