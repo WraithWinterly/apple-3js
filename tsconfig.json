@@ -36,7 +36,9 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.js",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "src/components/VideoCarousel.tsx",
+    "src/components/PhoneModel.tsx"
   ],
   "exclude": ["node_modules"]
 }
