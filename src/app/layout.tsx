@@ -1,5 +1,8 @@
 import "~/styles/globals.css";
 
+// import Swiper styles
+import "swiper/css";
+
 import { GeistSans } from "geist/font/sans";
 
 export const metadata = {
