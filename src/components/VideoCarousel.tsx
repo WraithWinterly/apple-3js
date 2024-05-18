@@ -117,12 +117,14 @@ const VideoCarousel = () => {
         ))}
       </Swiper>
 
-      <div className="flex-center absolute left-0 right-0 my-10">
+      <div className="flex-center absolute left-0 right-0 mt-20 md:mt-24">
         <MiniNav
           splitMode
+          desiredLeftWidth={160}
+          desiredRightWidth={22}
           left={<></>}
           right={
-            <div className="absolute h-12 w-12 fill-[#f5f5f7]">
+            <div className="flex-center h-12 w-full cursor-pointer fill-[#f5f5f7]">
               {isLastVideo ? (
                 <ReplayIcon />
               ) : !isPlaying ? (
@@ -139,6 +141,7 @@ const VideoCarousel = () => {
           }
         />
       </div>
+      <div className="h-32 md:h-28"></div>
     </>
   );
 };

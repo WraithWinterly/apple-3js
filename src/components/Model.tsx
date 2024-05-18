@@ -10,6 +10,7 @@ import { View } from "@react-three/drei";
 import { modelDirection } from "three/examples/jsm/nodes/Nodes.js";
 import { models, sizes } from "~/constants";
 import { animateWithGsapTimeline } from "~/utils/animations";
+import MiniNav from "./MiniNav";
 
 export default function Model() {
   const [_document, setDocument] = React.useState<Document | null>();
@@ -56,6 +57,11 @@ export default function Model() {
         },
       );
     }
+    gsap.to("#selected-circle", {
+      x: size === "large" ? "54px" : "0px",
+      duration: 0.3,
+      ease: "power2.inOut",
+    });
   }, [size]);
 
   useGSAP(() => {
@@ -64,6 +70,7 @@ export default function Model() {
       y: 0,
     });
   }, []);
+
   return (
     <section className="common-padding">
       <div className="screen-max-width">
@@ -107,36 +114,68 @@ export default function Model() {
               </Canvas>
             )}
           </div>
-          <div className="mx-auto w-full ">
+          <div className="flex-center relative mx-auto w-full">
             <p className="mb-5 text-center">{model.title}</p>
-            <p className="mb-5 text-center text-sm font-light"></p>
-            <div className="flex-center">
-              <ul className="color-container">
-                {models.map((item, index) => (
-                  <li
-                    key={index}
-                    className="color mx-2 h-6 w-6 cursor-pointer rounded-full"
-                    style={{ backgroundColor: item.color[0] }}
-                    onClick={() => setModel(item)}
-                  ></li>
-                ))}
-              </ul>
-              <button className="size-btn-container">
-                {sizes.map(({ label, value }, index) => (
-                  <span
-                    key={label}
-                    className="size-btn"
-                    style={{
-                      backgroundColor: value === size ? "white" : "transparent",
-                      color: size === value ? "black" : "white",
-                    }}
-                    onClick={() => setSize(value)}
-                  >
-                    {label}
-                  </span>
-                ))}
-              </button>
+            <p className="mb-5 text-center text-xs font-light"></p>
+            <div className="h-12"></div>
+            <div className="absolute h-24">
+              <div className="flex-center mt-20 w-full">
+                <MiniNav
+                  onRightClick={() => {}}
+                  desiredLeftWidth={182}
+                  desiredRightWidth={110}
+                  splitMode={true}
+                  left={
+                    <ul className="flex justify-center gap-4">
+                      {models.map((item, index) => (
+                        <button
+                          key={index}
+                          className={`color h-6 w-6 cursor-pointer rounded-full transition-all  ${
+                            model.title === item.title
+                              ? "outline outline-2 outline-white"
+                              : ""
+                          }`}
+                          style={{
+                            backgroundColor: item.color[0],
+                          }}
+                          onClick={() => setModel(item)}
+                          onFocus={(e) =>
+                            (e.target.style.boxShadow =
+                              "0 0 0 4px white, 0 0 0 8px blue")
+                          }
+                          onBlur={(e) => (e.target.style.boxShadow = "none")}
+                        ></button>
+                      ))}
+                    </ul>
+                  }
+                  right={
+                    <span className="relative mx-1 flex items-center justify-between">
+                      <div
+                        id="selected-circle"
+                        className="absolute -z-10 h-12 w-12 rounded-full bg-white"
+                      ></div>
+                      {sizes.map(({ label, value }, index) => (
+                        <button
+                          key={label}
+                          className="flex h-12 w-12 items-center justify-center rounded-full outline outline-0  outline-white transition-all focus:outline-4"
+                          style={{
+                            //   backgroundColor:
+                            //     value === size ? "white" : "transparent",
+                            color: value === size ? "black" : "white",
+                            // padding: value === size ? "5px" : "0px", // Add padding only when selected
+                            // margin: value === size ? "-5px" : "0px", // Use negative margin to keep the button the same size
+                          }}
+                          onClick={() => setSize(value)}
+                        >
+                          {label}
+                        </button>
+                      ))}
+                    </span>
+                  }
+                />
+              </div>
             </div>
+            <div className="h-12"></div>
           </div>
         </div>
       </div>

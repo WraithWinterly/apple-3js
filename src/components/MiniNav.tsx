@@ -2,53 +2,69 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import React from "react";
+import React, { useId } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function MiniNav({
-  splitMode = false,
   left,
+  desiredLeftWidth,
   right,
+  desiredRightWidth,
+  splitMode = false,
   onRightClick,
 }: {
-  splitMode?: boolean;
   left: React.ReactNode;
+  desiredLeftWidth: number;
   right: React.ReactNode;
+  desiredRightWidth: number;
+  splitMode?: boolean;
   onRightClick: () => void;
 }) {
+  const idOg = useId();
+  const id = idOg.replace(/[:]/g, "");
+
   useGSAP(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: "#mini-nav-group",
-        start: "bottom 130%", // Adjust this as needed
+        trigger: "#mini-nav-group" + id,
+        start: "bottom 110%", // Adjust this as needed
         end: "bottom bottom",
 
         scrub: false,
         toggleActions: "restart none none none",
 
         onLeave: () => {
-          document.getElementById("mini-nav-group")?.classList.add("hidden");
+          document
+            .getElementById("mini-nav-group" + id)
+            ?.classList.add("hidden");
+          document.getElementById("mini-nav-left" + id)!.style.width = "42";
+          document.getElementById("mini-nav-right" + id)!.style.width = "42";
         },
       },
     });
     // Setup
-    tl.to("#mini-nav-left", {
+    tl.to("#mini-nav-left" + id, {
       borderWidth: 0,
+      width: "42px",
       translateX: 26,
       duration: 0,
-    }).to("#mini-nav-right", {
+    }).to("#mini-nav-right" + id, {
+      width: "42px",
       borderWidth: 0,
       translateX: -46,
       duration: 0,
     });
-    tl.to("#mini-nav-group", {
+    tl.to("#mini-nav-group" + id, {
       translateY: 70,
+      duration: 0,
+    }).to(["#mini-nav-left-content" + id, "#mini-nav-right-content" + id], {
+      opacity: 0,
       duration: 0,
     });
 
     tl.to(
-      "#mini-nav-group",
+      "#mini-nav-group" + id,
 
       {
         opacity: 1,
@@ -59,7 +75,7 @@ export default function MiniNav({
         ease: "power2.inOut",
       },
     )
-      .to("#mini-nav-left", {
+      .to("#mini-nav-left" + id, {
         opacity: 1,
         borderWidth: 15,
 
@@ -69,7 +85,7 @@ export default function MiniNav({
         ease: "power2.inOut",
       })
       .to(
-        "#mini-nav-right",
+        "#mini-nav-right" + id,
         {
           opacity: 1,
           borderWidth: 15,
@@ -81,7 +97,7 @@ export default function MiniNav({
         },
         "<",
       );
-    tl.to("#mini-nav-left", {
+    tl.to("#mini-nav-left" + id, {
       //   width: "160px",
 
       borderWidth: 0,
@@ -90,7 +106,7 @@ export default function MiniNav({
       ease: "power4.out",
       duration: 0.3,
     }).to(
-      "#mini-nav-right",
+      "#mini-nav-right" + id,
       {
         borderWidth: 0,
         translateY: 0,
@@ -100,9 +116,9 @@ export default function MiniNav({
       },
       "<",
     );
-
-    tl.to(["#mini-nav-left"], {
-      width: "160px",
+    console.log(desiredRightWidth);
+    tl.to("#mini-nav-left" + id, {
+      width: String(desiredLeftWidth) + "px",
       opacity: 1,
 
       translateX: 0,
@@ -110,8 +126,10 @@ export default function MiniNav({
       ease: "power4.out",
     })
       .to(
-        ["#mini-nav-right"],
+        "#mini-nav-right" + id,
         {
+          width: String(desiredRightWidth) + "px",
+          // width: "800px",
           opacity: 1,
           translateX: 0,
           duration: 0.25,
@@ -120,7 +138,7 @@ export default function MiniNav({
         "<",
       )
       .to(
-        ["#mini-nav-left-content", "#mini-nav-right-content"],
+        ["#mini-nav-left-content" + id, "#mini-nav-right-content" + id],
         {
           opacity: 1,
 
@@ -135,30 +153,30 @@ export default function MiniNav({
   }, []);
 
   return (
-    <div className="hidden scale-0 gap-0 opacity-0 " id="mini-nav-group">
+    <div className="hidden scale-0 gap-0 opacity-0 " id={"mini-nav-group" + id}>
       <div
         className="control-btn relative border-[var(--accent)]"
-        id="mini-nav-left"
+        id={"mini-nav-left" + id}
       >
         <div
-          id="mini-nav-left-content"
+          id={"mini-nav-left-content" + id}
           className="absolute flex h-12 w-full items-center justify-center opacity-0"
         >
           {left}
         </div>
       </div>
-      <button
+      <div
         className="control-btn relative border-[var(--accent)]"
-        id="mini-nav-right"
+        id={"mini-nav-right" + id}
         onClick={onRightClick}
       >
         <div
-          id="mini-nav-right-content"
-          className="absolute h-12 w-12 opacity-0"
+          id={"mini-nav-right-content" + id}
+          className="absolute left-0 right-0 opacity-0"
         >
           {right}
         </div>
-      </button>
+      </div>
     </div>
   );
 }
