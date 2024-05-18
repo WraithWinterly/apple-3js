@@ -5,7 +5,7 @@ import PlayIcon from "~/components/icons/play-icon";
 export default function Test() {
   return (
     <div className="flex h-[500px] flex-col items-center justify-center">
-      <p>hello world</p>
+      {/* <p>hello world</p>
       <div className="flex-center relative mt-10">
         <MiniNav
           splitMode
@@ -19,7 +19,7 @@ export default function Test() {
             console.log("click");
           }}
         />
-      </div>
+      </div> */}
     </div>
   );
 }
