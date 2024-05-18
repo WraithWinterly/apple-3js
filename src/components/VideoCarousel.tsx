@@ -117,7 +117,7 @@ const VideoCarousel = () => {
         ))}
       </Swiper>
 
-      <div className="flex-center relative mt-10">
+      <div className="flex-center absolute left-0 right-0 my-10">
         <MiniNav
           splitMode
           left={<></>}
