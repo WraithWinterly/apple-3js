@@ -8,9 +8,14 @@ import MiniNav from "./MiniNav";
 import ReplayIcon from "./icons/replay-icon";
 import PlayIcon from "./icons/play-icon";
 import PauseIcon from "./icons/pause-icon";
+import gsap from "gsap";
+import { dot } from "three/examples/jsm/nodes/Nodes.js";
 
 const VideoCarousel = () => {
   const videoRef = useRef<HTMLVideoElement[]>([]);
+  const videoCrumbsSpanRef = useRef<Array<HTMLSpanElement> | null>([]);
+  const videoCrumbsDivRef = useRef<Array<HTMLDivElement> | null>([]);
+
   const [video, setVideo] = useState({
     isLastVideo: false,
     isPlaying: false,
@@ -24,8 +29,56 @@ const VideoCarousel = () => {
   useEffect(() => {
     if (!!swiper) {
       handleProcess("play");
+      dot_expand(0);
     }
   }, [swiper]);
+
+  useEffect(() => {
+    let currentProgress = 0;
+    let span = videoCrumbsSpanRef.current!;
+
+    if (span[videoId]) {
+      // animation to move the indicator
+      let anim = gsap.to(span[videoId]!, {
+        onUpdate: () => {
+          // get the progress of the video
+          const progress = Math.ceil(anim.progress() * 100);
+
+          if (progress != currentProgress) {
+            currentProgress = progress;
+
+            // set the background color of the progress bar
+            gsap.to(span[videoId]!, {
+              width: `${currentProgress}%`,
+              backgroundColor: "white",
+            });
+          }
+        },
+      });
+
+      if (videoId == 0) {
+        anim.restart();
+      }
+
+      // update the progress bar
+      const animUpdate = () => {
+        anim.progress(
+          videoRef.current[videoId]!.currentTime /
+            hightlightsSlides[videoId]!.videoDuration,
+        );
+      };
+
+      gsap.ticker.remove(animUpdate);
+
+      if (isPlaying) {
+        // ticker to update the progress bar
+        gsap.ticker.add(animUpdate);
+      } else {
+        // remove the ticker when the video is paused (progress bar is stopped)
+        gsap.ticker.remove(animUpdate);
+      }
+    }
+  }, [videoId, isPlaying]);
 
   const handleProcess = (type: string) => {
     if (!swiper) {
@@ -34,18 +87,23 @@ const VideoCarousel = () => {
     }
     switch (type) {
       case "video-end":
-        const nextVideoId = videoId + 1;
+        let nextVideoId = videoId + 1;
+        if (nextVideoId >= hightlightsSlides.length) {
+          nextVideoId = 4;
+        }
         setVideo((prev) => ({
           ...prev,
           videoId: nextVideoId,
           isLastVideo: nextVideoId >= hightlightsSlides.length,
         }));
         swiper.slideNext();
-        videoRef.current[videoId]?.play();
+        // videoRef.current[videoId]?.play();
         break;
       case "video-reset":
         setVideo({ isLastVideo: false, isPlaying: true, videoId: 0 });
         swiper.slideTo(0);
+
+        videoRef.current[0]!.currentTime = 0;
         videoRef.current[0]?.play();
         break;
       case "pause":
@@ -61,6 +119,41 @@ const VideoCarousel = () => {
     }
   };
 
+  useEffect(() => {
+    let span = videoCrumbsSpanRef.current;
+    if (!span) {
+      console.error("span not found");
+      return;
+    }
+
+    videoCrumbsDivRef.current?.forEach((div, i) => {
+      if (i != videoId) {
+        gsap.to(videoCrumbsDivRef.current![i]!, {
+          width: "12px",
+        });
+        gsap.to(span[i]!, {
+          backgroundColor: "#afafaf",
+        });
+      } else {
+        dot_expand(i);
+      }
+    });
+  }, [videoId]);
+  function dot_expand(i: number) {
+    let span = videoCrumbsSpanRef.current!;
+    gsap.to(videoCrumbsDivRef.current![i]!, {
+      width:
+        window.innerWidth < 760
+          ? "10vw" // mobile
+          : window.innerWidth < 1200
+            ? "6vw" // tablet
+            : "4vw", // laptop
+    });
+
+    gsap.to(span[i]!, {
+      backgroundColor: "white",
+    });
+  }
   return (
     <>
       <Swiper
@@ -117,12 +210,44 @@ const VideoCarousel = () => {
         ))}
       </Swiper>
 
-      <div className="flex-center absolute left-0 right-0 mt-20 md:mt-24">
+      <div className="md:mt-24">
         <MiniNav
           splitMode
-          desiredLeftWidth={160}
+          desiredLeftWidth={170}
           desiredRightWidth={22}
-          left={<></>}
+          left={
+            <>
+              <div className="flex">
+                {videoRef.current.map((_, i) => (
+                  <span
+                    key={i}
+                    onClick={() => {
+                      // reset current video progress
+
+                      if (!!videoRef.current[videoId]) {
+                        videoRef.current[videoId]!.currentTime = 0;
+                      }
+
+                      if (videoId != i) {
+                        videoRef.current[i]!.currentTime = 0;
+                      }
+                      setVideo((prev) => ({ ...prev, videoId: i }));
+                      swiper?.slideTo(i);
+                    }}
+                    className="relative mx-2 h-3 w-3 cursor-pointer rounded-full bg-gray-200"
+                    // @ts-expect-error ...
+                    ref={(el) => (videoCrumbsDivRef.current[i] = el)}
+                  >
+                    <span
+                      className={`absolute h-full rounded-full ${i === videoId ? "opacity-100" : "opacity-0"}`}
+                      // @ts-expect-error ...
+                      ref={(el) => (videoCrumbsSpanRef.current[i] = el)}
+                    />
+                  </span>
+                ))}
+              </div>
+            </>
+          }
           right={
             <div className="flex-center h-12 w-full cursor-pointer fill-[#f5f5f7]">
               {isLastVideo ? (
@@ -134,7 +259,8 @@ const VideoCarousel = () => {
               )}
             </div>
           }
-          onRightClick={() =>
+          isRButton
+          onRButtonClick={() =>
             handleProcess(
               isLastVideo ? "video-reset" : isPlaying ? "pause" : "play",
             )

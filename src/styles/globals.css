@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 :root {
-  --accent: #0071e3;
+  --blue: #0071e3;
 }
 * {
   margin: 0;
@@ -82,10 +82,6 @@ canvas {
 
   .link {
     @apply flex translate-y-20 cursor-pointer items-center text-xl text-blue opacity-0 hover:underline;
-  }
-
-  .control-btn {
-    @apply flex-center ml-4 rounded-full bg-gray-300 p-7 backdrop-blur;
   }
 
   .hero-title {

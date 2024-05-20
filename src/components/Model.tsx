@@ -114,69 +114,69 @@ export default function Model() {
               </Canvas>
             )}
           </div>
-          <div className="flex-center relative mx-auto w-full">
-            <p className="mb-5 text-center">{model.title}</p>
-            <p className="mb-5 text-center text-xs font-light"></p>
-            <div className="h-12"></div>
-            <div className="absolute h-24">
-              <div className="flex-center mt-20 w-full">
-                <MiniNav
-                  onRightClick={() => {}}
-                  desiredLeftWidth={182}
-                  desiredRightWidth={110}
-                  splitMode={true}
-                  left={
-                    <ul className="flex justify-center gap-4">
-                      {models.map((item, index) => (
-                        <button
-                          key={index}
-                          className={`color h-6 w-6 cursor-pointer rounded-full transition-all  ${
-                            model.title === item.title
-                              ? "outline outline-2 outline-white"
-                              : ""
-                          }`}
-                          style={{
-                            backgroundColor: item.color[0],
-                          }}
-                          onClick={() => setModel(item)}
-                          onFocus={(e) =>
-                            (e.target.style.boxShadow =
-                              "0 0 0 4px white, 0 0 0 8px blue")
-                          }
-                          onBlur={(e) => (e.target.style.boxShadow = "none")}
-                        ></button>
-                      ))}
-                    </ul>
-                  }
-                  right={
-                    <span className="relative mx-1 flex items-center justify-between">
-                      <div
-                        id="selected-circle"
-                        className="absolute -z-10 h-12 w-12 rounded-full bg-white"
-                      ></div>
-                      {sizes.map(({ label, value }, index) => (
-                        <button
-                          key={label}
-                          className="flex h-12 w-12 items-center justify-center rounded-full outline outline-0  outline-white transition-all focus:outline-4"
-                          style={{
-                            //   backgroundColor:
-                            //     value === size ? "white" : "transparent",
-                            color: value === size ? "black" : "white",
-                            // padding: value === size ? "5px" : "0px", // Add padding only when selected
-                            // margin: value === size ? "-5px" : "0px", // Use negative margin to keep the button the same size
-                          }}
-                          onClick={() => setSize(value)}
-                        >
-                          {label}
-                        </button>
-                      ))}
-                    </span>
-                  }
-                />
-              </div>
+          <div className="relative flex w-full flex-col items-center">
+            <p className="w-full text-center">{model.title}</p>
+            <div className="flex-center w-full">
+              <MiniNav
+                desiredLeftWidth={182}
+                desiredRightWidth={110}
+                splitMode={true}
+                left={
+                  <ul className="flex justify-center gap-4">
+                    {models.map((item, index) => (
+                      <button
+                        key={index}
+                        className={`color h-6 w-6 cursor-pointer rounded-full transition-all  ${
+                          model.title === item.title
+                            ? "outline outline-2 outline-white"
+                            : ""
+                        }`}
+                        style={{
+                          backgroundColor: item.color[0],
+                        }}
+                        onClick={() => setModel(item)}
+                        onFocus={(e) =>
+                          (e.target.style.boxShadow =
+                            "0 0 0 4px white, 0 0 0 8px var(--blue)")
+                        }
+                        onBlur={(e) => (e.target.style.boxShadow = "none")}
+                      ></button>
+                    ))}
+                  </ul>
+                }
+                right={
+                  <span className="relative mx-1 flex items-center justify-between">
+                    <div
+                      id="selected-circle"
+                      className="absolute -z-10 h-12 w-12 rounded-full bg-white"
+                    ></div>
+                    {sizes.map(({ label, value }, index) => (
+                      <button
+                        key={label}
+                        className="flex h-12 w-12 items-center justify-center rounded-full outline outline-0  outline-white transition-all focus:outline-4"
+                        style={{
+                          //   backgroundColor:
+                          //     value === size ? "white" : "transparent",
+                          color: value === size ? "black" : "white",
+                          // padding: value === size ? "5px" : "0px", // Add padding only when selected
+                          // margin: value === size ? "-5px" : "0px", // Use negative margin to keep the button the same size
+                        }}
+                        onClick={() => setSize(value)}
+                        onFocus={(e) =>
+                          (e.target.style.boxShadow =
+                            "0 0 0 4px white, 0 0 0 8px var(--blue)")
+                        }
+                        onBlur={(e) => (e.target.style.boxShadow = "none")}
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </span>
+                }
+              />
             </div>
-            <div className="h-12"></div>
           </div>
+          <div className="h-12"></div>
         </div>
       </div>
     </section>

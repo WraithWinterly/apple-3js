@@ -12,14 +12,16 @@ export default function MiniNav({
   right,
   desiredRightWidth,
   splitMode = false,
-  onRightClick,
+  isRButton = false,
+  onRButtonClick,
 }: {
   left: React.ReactNode;
   desiredLeftWidth: number;
   right: React.ReactNode;
   desiredRightWidth: number;
   splitMode?: boolean;
-  onRightClick: () => void;
+  isRButton?: boolean;
+  onRButtonClick?: () => void;
 }) {
   const idOg = useId();
   const id = idOg.replace(/[:]/g, "");
@@ -34,24 +36,29 @@ export default function MiniNav({
         scrub: false,
         toggleActions: "restart none none none",
 
-        onLeave: () => {
-          document
-            .getElementById("mini-nav-group" + id)
-            ?.classList.add("hidden");
-          document.getElementById("mini-nav-left" + id)!.style.width = "42";
-          document.getElementById("mini-nav-right" + id)!.style.width = "42";
+        // onLeave: () => {
+        //   document
+        //     .getElementById("mini-nav-group" + id)
+        //     ?.classList.add("fixed", "z-10");
+        //   document.getElementById("mini-nav-left" + id)!.style.width = "42";
+        //   document.getElementById("mini-nav-right" + id)!.style.width = "42";
+        // },
+        onEnter: () => {
+          // idea - on enter track scroll position difference, if it is equal view at bottom of screen,
+          // change of fixed, then at a certain point animate it away
         },
       },
     });
+    const ANIM_MAIN_DURATION = 0.3;
     // Setup
     tl.to("#mini-nav-left" + id, {
-      borderWidth: 0,
+      outlineWidth: 0,
       width: "42px",
       translateX: 26,
       duration: 0,
     }).to("#mini-nav-right" + id, {
       width: "42px",
-      borderWidth: 0,
+      outlineWidth: 0,
       translateX: -46,
       duration: 0,
     });
@@ -63,6 +70,7 @@ export default function MiniNav({
       duration: 0,
     });
 
+    // STEP ONE, COME UP
     tl.to(
       "#mini-nav-group" + id,
 
@@ -72,109 +80,112 @@ export default function MiniNav({
         display: "flex",
         y: 0,
         duration: 0.6,
-        ease: "power2.inOut",
+        ease: "back.inOut",
       },
     )
+      // WHILE COMING UP, SHOW THE BLUE ANIMATION
       .to("#mini-nav-left" + id, {
         opacity: 1,
-        borderWidth: 15,
+        outlineWidth: 15,
 
-        translateX: 44,
-        translateY: -15,
-        duration: 0.3,
-        ease: "power2.inOut",
+        duration: ANIM_MAIN_DURATION,
+        ease: "power2.in",
       })
       .to(
         "#mini-nav-right" + id,
         {
           opacity: 1,
-          borderWidth: 15,
-
-          translateX: -60,
-          translateY: -15,
-          duration: 0.3,
-          ease: "power2.inOut",
+          outlineWidth: 15,
+          duration: ANIM_MAIN_DURATION,
+          ease: "power2.in",
         },
         "<",
       );
-    tl.to("#mini-nav-left" + id, {
-      //   width: "160px",
 
-      borderWidth: 0,
-      translateY: 0,
+    // SHRINK OUTLINE
+    tl.to("#mini-nav-left" + id, {
+      outlineWidth: 0,
       translateX: 26,
-      ease: "power4.out",
-      duration: 0.3,
+      ease: "back.out",
+      duration: ANIM_MAIN_DURATION,
     }).to(
       "#mini-nav-right" + id,
       {
-        borderWidth: 0,
-        translateY: 0,
-        translateX: -46,
-        ease: "power4.out",
-        duration: 0.3,
+        outlineWidth: 0,
+        ease: "back.out",
+        duration: ANIM_MAIN_DURATION,
       },
       "<",
     );
-    console.log(desiredRightWidth);
-    tl.to("#mini-nav-left" + id, {
-      width: String(desiredLeftWidth) + "px",
-      opacity: 1,
 
-      translateX: 0,
-      duration: 0.25,
-      ease: "power4.out",
-    })
-      .to(
-        "#mini-nav-right" + id,
-        {
-          width: String(desiredRightWidth) + "px",
-          // width: "800px",
-          opacity: 1,
-          translateX: 0,
-          duration: 0.25,
-          ease: "power4.out",
-        },
-        "<",
-      )
-      .to(
-        ["#mini-nav-left-content" + id, "#mini-nav-right-content" + id],
-        {
-          opacity: 1,
+    // WHILE ^, SEPARATE BUBBLES OUT AND FADE IN CONTENT
+    tl.to(
+      "#mini-nav-left" + id,
+      {
+        width: String(desiredLeftWidth) + "px",
+        opacity: 1,
 
-          duration: 0.8,
-          ease: "power2.inOut",
-        },
-        "<",
-      );
+        translateX: 0,
+        duration: ANIM_MAIN_DURATION,
+        ease: "back.out",
+      },
+      // I LOVE the way it looks with this one. Basically the blue border spreads out. However
+      // "<",
+    );
+    tl.to(
+      "#mini-nav-right" + id,
+      {
+        width: String(desiredRightWidth) + "px",
+        opacity: 1,
+        translateX: 0,
+        duration: ANIM_MAIN_DURATION,
+        ease: "back.out",
+      },
+      "<",
+    );
+    tl.to(
+      ["#mini-nav-left-content" + id, "#mini-nav-right-content" + id],
+      {
+        opacity: 1,
+
+        duration: 0.8,
+        ease: "power2.out",
+      },
+      "<",
+    );
 
     // in then shrinks inside bubble
     // bubble piece expands
   }, []);
 
   return (
-    <div className="hidden scale-0 gap-0 opacity-0 " id={"mini-nav-group" + id}>
+    <div className="relative flex h-24 w-full flex-col items-center justify-center overflow-hidden">
       <div
-        className="control-btn relative border-[var(--accent)]"
-        id={"mini-nav-left" + id}
+        className="absolute hidden scale-0 gap-0 opacity-0"
+        id={"mini-nav-group" + id}
       >
         <div
-          id={"mini-nav-left-content" + id}
-          className="absolute flex h-12 w-full items-center justify-center opacity-0"
+          className="flex-center relative ml-4 rounded-full bg-gray-300 p-7 outline outline-blue backdrop-blur"
+          id={"mini-nav-left" + id}
         >
-          {left}
+          <div
+            id={"mini-nav-left-content" + id}
+            className="absolute flex h-12 w-full items-center justify-center opacity-0"
+          >
+            {left}
+          </div>
         </div>
-      </div>
-      <div
-        className="control-btn relative border-[var(--accent)]"
-        id={"mini-nav-right" + id}
-        onClick={onRightClick}
-      >
         <div
-          id={"mini-nav-right-content" + id}
-          className="absolute left-0 right-0 opacity-0"
+          className={`flex-center relative ml-4 rounded-full bg-gray-300 p-7 outline outline-blue backdrop-blur transition-colors ${isRButton ? "hover:bg-gray-300Hover" : ""}`}
+          id={"mini-nav-right" + id}
+          onClick={onRButtonClick}
         >
-          {right}
+          <div
+            id={"mini-nav-right-content" + id}
+            className="absolute left-0 right-0 opacity-0"
+          >
+            {right}
+          </div>
         </div>
       </div>
     </div>
