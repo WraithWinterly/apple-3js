@@ -11,7 +11,7 @@ export default function CameraIguana() {
       scrollTrigger: {
         trigger: "#camera-iguana",
         scrub: 1.2,
-        markers: true,
+        // markers: true,
         start: "top 60%",
         end: "-20% top",
 

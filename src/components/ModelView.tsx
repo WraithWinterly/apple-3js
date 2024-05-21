@@ -42,6 +42,7 @@ export default function ModelView({
   setMasterPosRot: Dispatch<SetStateAction<[THREE.Vector3, THREE.Euler]>>;
 }) {
   useEffect(() => {
+    if (orbitActive) return;
     if (!!controlRef.current) {
       controlRef.current?.object.rotation.set(
         masterPosRot[1].x,
@@ -70,7 +71,7 @@ export default function ModelView({
         ref={controlRef}
         enableZoom={false}
         enablePan={false}
-        rotateSpeed={0.4}
+        rotateSpeed={4}
         target={new THREE.Vector3(0, 0, 0)}
         onEnd={() => {
           setRotationState(controlRef.current?.getAzimuthalAngle());
