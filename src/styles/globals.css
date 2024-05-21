@@ -89,7 +89,7 @@ canvas {
   }
 
   .hiw-title {
-    @apply text-center text-4xl font-semibold md:text-7xl;
+    @apply text-center text-4xl font-semibold md:text-6xl;
   }
 
   .hiw-subtitle {
