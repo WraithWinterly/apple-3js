@@ -3,6 +3,7 @@
 @tailwind utilities;
 :root {
   --blue: #0071e3;
+  overflow-x: hidden;
 }
 * {
   margin: 0;

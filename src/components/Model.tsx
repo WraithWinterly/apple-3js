@@ -145,21 +145,24 @@ export default function Model() {
   }, []);
 
   return (
-    <section className="common-padding">
+    <section className="">
       <div className="screen-max-width">
         <h1 id="heading" className="section-heading">
           Take a closer look.
         </h1>
         {/* Model container */}
         <div className="mt-5 flex flex-col items-center">
-          <div className="relative h-[75vh] w-full overflow-hidden md:h-[90vh] ">
+          <div
+            className="relative h-[80vh] w-[130%] overflow-hidden md:h-[90vh]"
+            id="canvas-container"
+          >
             {!!_document && (
               <div className="flex h-full flex-grow translate-x-1/4">
                 <Canvas
-                  className="h-[10vh] w-[200px]"
+                  className=" h-[10vh]"
                   id="view1"
                   style={{}}
-                  eventSource={_document!.body}
+                  eventSource={_document.getElementById("canvas-container")!}
                 >
                   <ModelView
                     index={0}
@@ -175,10 +178,10 @@ export default function Model() {
                   />
                 </Canvas>
                 <Canvas
-                  className="h-[10vh] w-[200px] opacity-0"
+                  className="h-[10vh] opacity-0"
                   id="view2"
                   style={{}}
-                  eventSource={_document!.body}
+                  eventSource={_document.getElementById("canvas-container")!}
                 >
                   <ModelView
                     index={1}
