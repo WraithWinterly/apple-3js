@@ -6,6 +6,7 @@ import Highlights from "~/components/Highlights";
 import HowItWorks from "~/components/HowItWorks";
 import Model from "~/components/Model";
 import Navbar from "~/components/Navbar";
+import ProLenses from "~/components/ProLenses";
 
 export default function HomePage() {
   return (
@@ -17,6 +18,7 @@ export default function HomePage() {
       <Features />
       <HowItWorks />
       <CameraIguana />
+      <ProLenses />
       <Footer />
     </main>
   );
