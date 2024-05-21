@@ -191,7 +191,7 @@ const VideoCarousel = () => {
                   muted
                   //@ts-expect-error todo
                   ref={(el) => (videoRef.current[i] = el)}
-                  onEnded={(e) => {
+                  onEnded={() => {
                     handleProcess("video-end");
                   }}
                 >

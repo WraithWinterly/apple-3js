@@ -4,6 +4,7 @@ import { chipImg, frameImg, frameVideo } from "../utils";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { animateWithGsap } from "../utils/animations";
+import Image from "next/image";
 
 const HowItWorks = () => {
   const videoRef = createRef<HTMLVideoElement>();
@@ -36,7 +37,7 @@ const HowItWorks = () => {
     <section className="common-padding">
       <div className="screen-max-width">
         <div id="chip" className="flex-center my-20 w-full">
-          <img src={chipImg.src} alt="chip" width={180} height={180} />
+          <Image src={chipImg.src} alt="chip" width={180} height={180} />
         </div>
 
         <div className="flex flex-col items-center">

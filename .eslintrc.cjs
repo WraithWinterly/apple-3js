@@ -21,6 +21,7 @@ const config = {
     "@typescript-eslint/ban-ts-comment": "warn",
     "@typescript-eslint/no-unnecessary-type-assertion": "warn",
     "@typescript-eslint/no-empty-function": "warn",
+    "react/no-unescaped-entities": "warn",
 
     "prefer-const": "warn",
     "@typescript-eslint/no-floating-promises": "warn",

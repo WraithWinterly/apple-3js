@@ -1,9 +1,10 @@
 "use client";
 import { useGSAP } from "@gsap/react";
-import React, { createRef, useRef } from "react";
+import React, { createRef } from "react";
 import { animateWithGsap } from "../utils/animations";
 import { explore1Img, explore2Img, exploreVideo } from "../utils";
 import gsap from "gsap";
+import Image from "next/image";
 
 const Features = () => {
   const videoRef = createRef<HTMLVideoElement>();
@@ -68,17 +69,21 @@ const Features = () => {
             <div className="relative flex w-full flex-col">
               <div className="feature-video-container">
                 <div className="h-[50vh] flex-1 overflow-hidden">
-                  <img
+                  <Image
                     src={explore1Img.src}
                     alt="titanium"
                     className="feature-video g_grow"
+                    width={explore1Img.width}
+                    height={explore1Img.height}
                   />
                 </div>
                 <div className="h-[50vh] flex-1 overflow-hidden">
-                  <img
+                  <Image
                     src={explore2Img.src}
                     alt="titanium 2"
                     className="feature-video g_grow"
+                    width={explore2Img.width}
+                    height={explore2Img.height}
                   />
                 </div>
               </div>
