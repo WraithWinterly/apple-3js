@@ -13,7 +13,7 @@ import { useGLTF, useTexture } from "@react-three/drei";
 
 function Model(props) {
   const { nodes, materials } = useGLTF("/models/scene.glb");
-  console.log(props.item);
+
   const texture = useTexture(props.item.img.src);
 
   useEffect(() => {
