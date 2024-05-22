@@ -105,7 +105,7 @@ export default function ProLenses() {
                 />
               </div>
               <div
-                className={`pt-4 ${isAnimating ? "opacity-0" : "opacity-100"} transition-opacity duration-100`}
+                className={`pt-4 ${isAnimating || i !== activeIndex ? "opacity-0" : "opacity-100"} transition-opacity duration-300`}
               >
                 <p className="text-lg text-white">
                   {" "}
