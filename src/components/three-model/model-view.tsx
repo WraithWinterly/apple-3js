@@ -14,7 +14,7 @@ import React, {
   useState,
 } from "react";
 import Lights from "./lights";
-import PhoneModel from "./iphone-model";
+import PhoneModel from "./phone-model";
 import * as THREE from "three";
 import ThreeLoadingPlaceholder from "./three-loading-placeholder";
 
