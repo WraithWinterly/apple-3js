@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { appleImg, bagImg, searchImg } from "~/utils";
 import { navLists } from "~/constants";
-export default function Navbar() {
+export default function Header() {
   return (
     <header className="flex w-full items-center justify-between px-5 py-5 sm:px-10">
       <nav className="screen-max-width flex w-full">
@@ -11,7 +11,7 @@ export default function Navbar() {
           {navLists.map((item) => (
             <div
               key={item}
-              className="text-gray cursor-pointer px-5 text-sm transition-all hover:text-white"
+              className="cursor-pointer px-5 text-sm text-gray transition-all hover:text-white"
             >
               {item}
             </div>

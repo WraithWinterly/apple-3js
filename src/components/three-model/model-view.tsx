@@ -13,10 +13,10 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import Lights from "./Lights";
-import PhoneModel from "./PhoneModel";
+import Lights from "./lights";
+import PhoneModel from "./iphone-model";
 import * as THREE from "three";
-import Loader from "./Loader";
+import ThreeLoadingPlaceholder from "./three-loading-placeholder";
 
 export default function ModelView({
   index,
@@ -82,7 +82,7 @@ export default function ModelView({
       />
 
       <group ref={groupRef} name={`${index === 1 ? "small" : "large"}`}>
-        <Suspense fallback={<Loader />}>
+        <Suspense fallback={<ThreeLoadingPlaceholder />}>
           <PhoneModel
             scale={index === 0 ? [15, 15, 15] : [17, 17, 17]}
             item={item}

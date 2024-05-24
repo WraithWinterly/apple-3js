@@ -2,8 +2,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
-import right from "~/../public/assets/images/right-arrow.svg";
-import left from "~/../public/assets/images/left-arrow.svg";
+import right from "~/../public/assets/images/ui/right-arrow.svg";
+import left from "~/../public/assets/images/ui/left-arrow.svg";
 
 const images = [
   {
@@ -37,7 +37,7 @@ const images = [
   },
 ];
 
-export default function ProLenses() {
+export default function ProLensesSection() {
   const path = (num: number) => "assets/images/lenses/" + num + ".jpg";
 
   const [activeIndex, setActiveIndex] = useState(0);

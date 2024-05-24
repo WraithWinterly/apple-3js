@@ -1,12 +1,12 @@
 "use client";
 import { useGSAP } from "@gsap/react";
 import React, { createRef } from "react";
-import { animateWithGsap } from "../utils/animations";
-import { explore1Img, explore2Img, exploreVideo } from "../utils";
+import { animateWithGsap } from "../../utils/animations";
+import { explore1Img, explore2Img, exploreVideo } from "../../utils";
 import gsap from "gsap";
 import Image from "next/image";
 
-const Features = () => {
+const FeaturesSection = () => {
   const videoRef = createRef<HTMLVideoElement>();
 
   useGSAP(() => {
@@ -120,4 +120,4 @@ const Features = () => {
   );
 };
 
-export default Features;
+export default FeaturesSection;

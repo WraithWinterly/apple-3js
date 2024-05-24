@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { hightlightsSlides } from "../constants";
+import { hightlightsSlides } from "../../constants";
 
 import Image from "next/image";
 import { Swiper, SwiperClass, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/swiper-bundle.css";
-import MiniNav from "./MiniNav";
-import ReplayIcon from "./icons/replay-icon";
-import PlayIcon from "./icons/play-icon";
-import PauseIcon from "./icons/pause-icon";
+import FloatingNav from "../floating-nav";
+import ReplayIcon from "../icons/replay-icon";
+import PlayIcon from "../icons/play-icon";
+import PauseIcon from "../icons/pause-icon";
 import gsap from "gsap";
 import { dot } from "three/examples/jsm/nodes/Nodes.js";
 
-const VideoCarousel = () => {
+const VideoCarouselSection = () => {
   const videoRef = useRef<HTMLVideoElement[]>([]);
   const videoCrumbsSpanRef = useRef<Array<HTMLSpanElement> | null>([]);
   const videoCrumbsDivRef = useRef<Array<HTMLDivElement> | null>([]);
@@ -211,7 +211,7 @@ const VideoCarousel = () => {
       </Swiper>
 
       <div className="md:mt-24">
-        <MiniNav
+        <FloatingNav
           splitMode
           desiredLeftWidth={170}
           desiredRightWidth={22}
@@ -272,4 +272,4 @@ const VideoCarousel = () => {
   );
 };
 
-export default VideoCarousel;
+export default VideoCarouselSection;

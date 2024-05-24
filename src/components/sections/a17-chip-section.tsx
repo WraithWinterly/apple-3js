@@ -1,12 +1,12 @@
 "use client";
 import React, { createRef, useRef } from "react";
-import { chipImg, frameImg, frameVideo } from "../utils";
+import { chipImg, frameImg, frameVideo } from "../../utils";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { animateWithGsap } from "../utils/animations";
+import { animateWithGsap } from "../../utils/animations";
 import Image from "next/image";
 
-const HowItWorks = () => {
+const A17ChipSection = () => {
   const videoRef = createRef<HTMLVideoElement>();
 
   useGSAP(() => {
@@ -108,4 +108,4 @@ const HowItWorks = () => {
   );
 };
 
-export default HowItWorks;
+export default A17ChipSection;

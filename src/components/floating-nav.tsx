@@ -6,7 +6,7 @@ import React, { useId } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function MiniNav({
+export default function FloatingNav({
   left,
   desiredLeftWidth,
   right,

@@ -1,6 +1,6 @@
 import React from "react";
-import Model from "~/components/Model";
+import PhoneModelSection from "~/components/sections/phone-model-section";
 
 export default function page() {
-  return <Model />;
+  return <iPhoneModelSection />;
 }

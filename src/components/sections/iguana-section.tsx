@@ -4,7 +4,7 @@ import gsap from "gsap";
 import Image from "next/image";
 import React from "react";
 import Iguana from "~/../public/assets/images/camera-iguana.jpg";
-export default function CameraIguana() {
+export default function IguanaSection() {
   useGSAP(() => {
     gsap.to("#camera-iguana", {
       scale: 1.25,

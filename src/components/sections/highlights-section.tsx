@@ -4,7 +4,7 @@ import gsap from "gsap";
 import Image from "next/image";
 import React from "react";
 import { watchImg } from "~/utils";
-import VideoCarousel from "./VideoCarousel";
+import VideoCarouselSection from "./video-carousel-section";
 
 export default function Highlights() {
   useGSAP(() => {
@@ -41,7 +41,7 @@ export default function Highlights() {
             </p>
           </div>
         </div>
-        <VideoCarousel />
+        <VideoCarouselSection />
       </div>
     </section>
   );

@@ -2,18 +2,18 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
-import ModelView from "./ModelView";
-import { yellowImg } from "~/utils";
+import ModelView from "../three-model/model-view";
+import { yellowWallpaperImg } from "~/utils";
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { View } from "@react-three/drei";
 import { modelDirection } from "three/examples/jsm/nodes/Nodes.js";
 import { models, sizes } from "~/constants";
-import { animateWithGsapTimeline } from "~/utils/animations";
-import MiniNav from "./MiniNav";
+
+import FloatingNav from "../floating-nav";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 
-export default function Model() {
+export default function PhoneModelSection() {
   const [_document, setDocument] = React.useState<Document | null>();
   useEffect(() => {
     setDocument(document);
@@ -22,7 +22,7 @@ export default function Model() {
   const [model, setModel] = useState({
     title: "iPhone 15 Pro in Natural Titanium",
     color: ["#8F8A81", "#ffe7b9", "#6f6c64"],
-    img: yellowImg,
+    img: yellowWallpaperImg,
   });
 
   const [masterPosRot, setMasterPosRot] = useState<
@@ -202,7 +202,7 @@ export default function Model() {
           <div className="relative flex w-full flex-col items-center">
             <p className="w-full text-center">{model.title}</p>
             <div className="flex-center w-full">
-              <MiniNav
+              <FloatingNav
                 desiredLeftWidth={182}
                 desiredRightWidth={110}
                 splitMode={true}

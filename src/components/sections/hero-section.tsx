@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { heroVideo, smallHeroVideo } from "~/utils";
 
-export default function Hero() {
+export default function HeroSection() {
   useGSAP(() => {
     gsap.to(".hero-title", {
       opacity: 1,

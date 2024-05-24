@@ -1,7 +1,7 @@
 import { Html } from "@react-three/drei";
 import React from "react";
 import Spinner from "react-bootstrap/Spinner";
-const Loader = () => {
+const ThreeLoadingPlaceholder = () => {
   return (
     <Html>
       <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center">
@@ -16,4 +16,4 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export default ThreeLoadingPlaceholder;

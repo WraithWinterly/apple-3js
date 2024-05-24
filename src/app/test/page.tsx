@@ -1,5 +1,5 @@
 "use client";
-import MiniNav from "~/components/MiniNav";
+import FloatingNav from "~/components/floating-nav";
 import PlayIcon from "~/components/icons/play-icon";
 
 export default function Test() {
