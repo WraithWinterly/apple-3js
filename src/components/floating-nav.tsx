@@ -165,7 +165,7 @@ export default function FloatingNav({
         id={"mini-nav-group" + id}
       >
         <div
-          className="flex-center relative ml-4 rounded-full bg-gray-300 p-7 outline outline-blue backdrop-blur"
+          className="relative ml-4 flex items-center justify-center rounded-full bg-gray-300 p-7 outline outline-blue backdrop-blur"
           id={"mini-nav-left" + id}
         >
           <div
@@ -176,7 +176,7 @@ export default function FloatingNav({
           </div>
         </div>
         <div
-          className={`flex-center relative ml-4 rounded-full bg-gray-300 p-7 outline outline-blue backdrop-blur transition-colors ${isRButton ? "hover:bg-gray-300Hover" : ""}`}
+          className={`relative ml-4 flex items-center justify-center rounded-full bg-gray-300 p-7 outline outline-blue backdrop-blur transition-colors ${isRButton ? "hover:bg-gray-300Hover" : ""}`}
           id={"mini-nav-right" + id}
           onClick={onRButtonClick}
         >

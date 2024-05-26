@@ -145,15 +145,15 @@ export default function PhoneModelSection() {
   }, []);
 
   return (
-    <section className="">
-      <div className="screen-max-width">
-        <h1 id="heading" className="section-heading">
+    <section className="px-0 md:px-20">
+      <div>
+        <h1 id="heading" className="text-center md:text-start">
           Take a closer look.
         </h1>
         {/* Model container */}
         <div className="mt-5 flex flex-col items-center">
           <div
-            className="relative h-[80vh] w-[130%] overflow-hidden md:h-[90vh]"
+            className="relative h-[60vh] w-[130%] overflow-hidden md:h-[90vh]"
             id="canvas-container"
           >
             {!!_document && (
@@ -201,7 +201,7 @@ export default function PhoneModelSection() {
           </div>
           <div className="relative flex w-full flex-col items-center">
             <p className="w-full text-center">{model.title}</p>
-            <div className="flex-center w-full">
+            <div className="flex w-full items-center justify-center">
               <FloatingNav
                 desiredLeftWidth={182}
                 desiredRightWidth={110}

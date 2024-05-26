@@ -22,15 +22,15 @@ export default function IguanaSection() {
     });
   }, []);
   return (
-    <div className="relative z-10 mx-10 mt-52 flex flex-col items-center">
-      <div className="mx-12 flex flex-col text-start text-2xl md:mx-0 md:max-w-4xl md:text-7xl">
-        <h2 className="text-start font-semibold text-white">
+    <section className="relative z-10 mt-52 flex flex-col items-center">
+      <div className="flex max-w-sm flex-col md:max-w-5xl ">
+        <h2 className=" text-start font-semibold text-white">
           A camera that captures your wildest imagination.
         </h2>
-        <p className="py-10 text-start text-xl text-gray md:text-2xl">
+        <h3 className="py-10">
           From dramatic framing flexibility to next-generation portraits, see
           what you can do with our most powerful iPhone camera system.
-        </p>
+        </h3>
       </div>
       {/* <div className="h-12"></div> */}
       <Image
@@ -42,9 +42,9 @@ export default function IguanaSection() {
         className="relative -z-10 translate-x-40 scale-[1.75] md:translate-x-0"
       />
 
-      <p className="mx-12 self-start py-10 text-start text-sm text-gray md:mx-32 md:text-xl ">
+      <p className="mx-16 max-w-md self-start py-10 text-start text-gray md:mx-32 md:text-xl">
         A green iguana, captured by the 48MP Main camera
       </p>
-    </div>
+    </section>
   );
 }

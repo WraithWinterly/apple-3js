@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { hightlightsSlides } from "../../constants";
+import { highlightsSlides } from "../constants";
 
 import Image from "next/image";
 import { Swiper, SwiperClass, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/swiper-bundle.css";
-import FloatingNav from "../floating-nav";
-import ReplayIcon from "../icons/replay-icon";
-import PlayIcon from "../icons/play-icon";
-import PauseIcon from "../icons/pause-icon";
+import FloatingNav from "./floating-nav";
+import ReplayIcon from "./icons/replay-icon";
+import PlayIcon from "./icons/play-icon";
+import PauseIcon from "./icons/pause-icon";
 import gsap from "gsap";
 import { dot } from "three/examples/jsm/nodes/Nodes.js";
 
@@ -49,7 +49,7 @@ const VideoCarouselSection = () => {
 
             // set the background color of the progress bar
             gsap.to(span[videoId]!, {
-              width: `${currentProgress}%`,
+              width: `${currentProgress < 10 ? 10 : currentProgress}%`,
               backgroundColor: "white",
             });
           }
@@ -64,7 +64,7 @@ const VideoCarouselSection = () => {
       const animUpdate = () => {
         anim.progress(
           videoRef.current[videoId]!.currentTime /
-            hightlightsSlides[videoId]!.videoDuration,
+            highlightsSlides[videoId]!.videoDuration,
         );
       };
 
@@ -88,13 +88,13 @@ const VideoCarouselSection = () => {
     switch (type) {
       case "video-end":
         let nextVideoId = videoId + 1;
-        if (nextVideoId >= hightlightsSlides.length) {
+        if (nextVideoId >= highlightsSlides.length) {
           nextVideoId = 4;
         }
         setVideo((prev) => ({
           ...prev,
           videoId: nextVideoId,
-          isLastVideo: nextVideoId >= hightlightsSlides.length,
+          isLastVideo: nextVideoId >= highlightsSlides.length,
         }));
         swiper.slideNext();
         // videoRef.current[videoId]?.play();
@@ -144,7 +144,7 @@ const VideoCarouselSection = () => {
     gsap.to(videoCrumbsDivRef.current![i]!, {
       width:
         window.innerWidth < 760
-          ? "10vw" // mobile
+          ? "8vw" // mobile
           : window.innerWidth < 1200
             ? "6vw" // tablet
             : "4vw", // laptop
@@ -180,13 +180,13 @@ const VideoCarouselSection = () => {
           setSwiper(s);
         }}
       >
-        {hightlightsSlides.map((list, i) => (
+        {highlightsSlides.map((list, i) => (
           <SwiperSlide key={list.id}>
             <div className="">
-              <div className="flex-center h-full w-full overflow-hidden rounded-3xl bg-black">
+              <div className="flex h-full w-full items-center justify-center overflow-hidden bg-black md:rounded-3xl">
                 <video
                   playsInline
-                  className="pointer-events-none"
+                  className="fill pointer-events-none h-[600px] object-cover"
                   preload="auto"
                   muted
                   //@ts-expect-error todo
@@ -249,7 +249,7 @@ const VideoCarouselSection = () => {
             </>
           }
           right={
-            <div className="flex-center h-12 w-full cursor-pointer fill-[#f5f5f7]">
+            <div className="flex h-12 w-full cursor-pointer items-center justify-center fill-[#f5f5f7]">
               {isLastVideo ? (
                 <ReplayIcon />
               ) : !isPlaying ? (

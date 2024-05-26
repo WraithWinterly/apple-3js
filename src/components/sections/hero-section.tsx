@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { heroVideo, smallHeroVideo } from "~/utils";
+import iPhoneHeadlineText from "~/../public/assets/images/iphone-15-pro-headline.png";
+import Image from "next/image";
 
 export default function HeroSection() {
   useGSAP(() => {
@@ -39,9 +41,15 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="nav-height relative w-full bg-black">
-      <div className="flex-center h-5/6 w-full flex-col">
-        <p className="hero-title">iPhone 15 Pro</p>
+    <section className="relative mt-20 h-[calc(100vh-60px)] w-full bg-black lg:mt-0">
+      <div className="flex h-5/6 w-full flex-col items-center justify-center">
+        <Image
+          src={iPhoneHeadlineText.src}
+          width={iPhoneHeadlineText.width}
+          height={iPhoneHeadlineText.height}
+          alt=""
+          className="mb-4 scale-75 md:scale-100"
+        />
         <div className="w-9/12 md:w-10/12">
           <video
             autoPlay
@@ -55,7 +63,7 @@ export default function HeroSection() {
         </div>
         <div
           id="cta"
-          className="flex translate-y-20 flex-col items-center opacity-0"
+          className="mt-4 flex translate-y-20 flex-col items-center opacity-0"
         >
           <a href="#highlights" className="btn">
             Buy

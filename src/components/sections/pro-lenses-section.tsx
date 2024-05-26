@@ -5,6 +5,8 @@ import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import right from "~/../public/assets/images/ui/right-arrow.svg";
 import left from "~/../public/assets/images/ui/left-arrow.svg";
 
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+
 const images = [
   {
     number: 0.5,
@@ -65,16 +67,18 @@ export default function ProLensesSection() {
         setUseSmaller(window.innerWidth < 600);
       });
     }
-  }, [window?.innerWidth]);
+  }, [typeof window !== "undefined" && window?.innerWidth]);
+
   return (
     <div className="relative">
       <div className="h-48"></div>
       <div className="flex w-full flex-col items-center pb-20">
-        <p className="max-w-[20rem] pl-1 text-start text-lg text-gray-100 md:-translate-x-36">
+        <h4 className="max-w-[20rem] pl-1 text-start text-lg text-gray-100 md:-translate-x-36">
           With iPhone 15 Pro, you have multiple focal lengths to work with. It's
-          like having <b className="text-white">seven pro lenses</b> in your
-          pocket, everywhere you go.
-        </p>
+          like having{" "}
+          <b className="text-white">seven pro lenses in your pocket</b>,
+          everywhere you go.
+        </h4>
       </div>
 
       <Swiper
@@ -95,7 +99,7 @@ export default function ProLensesSection() {
             <div
               className={`pointer-events-none flex flex-col items-center text-center ${i === activeIndex ? "opacity-100" : "opacity-50"} ${i > activeIndex ? "-translate-x-16 scale-75 " : "scale-100"}  transition-all duration-300 `}
             >
-              <div className="flex-center h-full overflow-hidden bg-black">
+              <div className="flex h-full items-center justify-center overflow-hidden bg-black">
                 <img
                   src={path(i)}
                   alt="lenses"
@@ -105,9 +109,9 @@ export default function ProLensesSection() {
                 />
               </div>
               <div
-                className={`pt-4 ${isAnimating || i !== activeIndex ? "opacity-0" : "opacity-100"} transition-opacity duration-300`}
+                className={`pt-6 ${isAnimating || i !== activeIndex ? "opacity-0" : "opacity-100"} transition-opacity duration-300`}
               >
-                <p className="text-lg text-white">
+                <p className="text-xl text-white">
                   {" "}
                   {list.new && "New "}
                   {list.number}x{" "}
@@ -118,32 +122,25 @@ export default function ProLensesSection() {
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="absolute bottom-32 right-10 z-10 flex gap-2 pb-2 md:bottom-44 md:right-20">
+      <div className="absolute right-10 z-10 flex gap-4 pb-2 md:bottom-44 md:right-60">
         <button
-          className="cursor-pointer rounded-full bg-gray-300 transition-colors hover:bg-gray-600 disabled:cursor-default disabled:bg-gray-900 disabled:hover:bg-gray-900"
+          className="cursor-pointer rounded-full bg-gray-300 transition-colors hover:bg-gray-400 disabled:cursor-default disabled:bg-gray-500 disabled:hover:bg-gray-500"
           onClick={() => swiper?.slidePrev()}
           disabled={activeIndex === 0 || isAnimating}
           id="prev-button"
         >
-          <Image
-            src={left}
-            alt="left"
-            className="pointer-events-none stroke-white"
-          />
+          <MdKeyboardArrowLeft className="pointer-events-none h-9 w-9 text-gray-100 hover:text-white disabled:text-gray-300" />
         </button>
         <button
-          className="cursor-pointer rounded-full bg-gray-300 transition-colors hover:bg-gray-600 disabled:cursor-default disabled:bg-gray-900 disabled:hover:bg-gray-900"
+          className="cursor-pointer rounded-full bg-gray-300 transition-colors hover:bg-gray-400 disabled:cursor-default disabled:bg-gray-500 disabled:hover:bg-gray-500"
           id="next-button"
           onClick={() => swiper?.slideNext()}
           disabled={activeIndex === images.length - 1 || isAnimating}
         >
-          <Image
-            src={right}
-            alt="right"
-            className="pointer-events-none stroke-white"
-          />
+          <MdKeyboardArrowRight className="pointer-events-none h-9 w-9 text-gray-100 hover:text-white disabled:text-gray-300" />
         </button>
       </div>
+
       <div className="h-48"></div>
     </div>
   );

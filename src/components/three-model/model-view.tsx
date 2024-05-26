@@ -61,7 +61,7 @@ export default function ModelView({
     <>
       <ambientLight intensity={0.3} />
 
-      <PerspectiveCamera makeDefault position={[0, 0, 4]} />
+      <PerspectiveCamera makeDefault position={[0, 0, 3.5]} />
 
       <Lights />
 
