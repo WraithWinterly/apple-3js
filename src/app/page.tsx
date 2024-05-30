@@ -11,6 +11,8 @@ import Camera48Section from "~/components/sections/camera-48-section";
 import TelephotoSection from "~/components/sections/telephoto-section";
 import VisionProSection from "~/components/sections/vision-pro-section";
 import ActionButtonSection from "~/components/sections/action-button-section";
+import ConnectivitySection from "~/components/sections/connectivity-section";
+import BatteryLifeSection from "~/components/sections/battery-life-section";
 
 export default function HomePage() {
   return (
@@ -27,6 +29,8 @@ export default function HomePage() {
       <VisionProSection />
       <TelephotoSection />
       <ActionButtonSection />
+      <ConnectivitySection />
+      <BatteryLifeSection />
       <Footer />
     </main>
   );
