@@ -72,12 +72,17 @@ export default function ProLensesSection() {
   return (
     <div className="relative">
       <div className="h-48"></div>
-      <div className="flex w-full flex-col items-center pb-20">
+      <div className="flex w-full flex-col items-center gap-4 pb-20">
         <h4 className="max-w-[20rem] pl-1 text-start text-lg text-gray-100 md:-translate-x-36">
-          With iPhone 15 Pro, you have multiple focal lengths to work with. It's
+          With iPhone 16 Pro, you have multiple focal lengths to work with. It's
           like having{" "}
           <b className="text-white">seven pro lenses in your pocket</b>,
           everywhere you go.
+        </h4>
+        <h4 className="max-w-[20rem] pl-1 text-start text-lg text-gray-100 md:-translate-x-36">
+          Once you take a photo, your creation
+          <b className="text-white"> is AI enhanced</b>, using our world class
+          technology.
         </h4>
       </div>
 

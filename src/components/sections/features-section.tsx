@@ -47,6 +47,7 @@ const FeaturesSection = () => {
           <div className="mb-24 mt-32 max-w-xs self-start pl-12 md:max-w-full md:pl-4">
             <h2>iPhone.</h2>
             <h2>Forged in titanium.</h2>
+            <h2>Reinforced by AI.</h2>
           </div>
           <div className="relative flex h-[50vh] w-full items-center">
             <video
@@ -87,10 +88,9 @@ const FeaturesSection = () => {
             <div className="mt-10 grid w-full items-center justify-center gap-5 md:mt-16 md:grid-cols-2 md:flex-row">
               <div className="flex flex-1 items-center justify-center">
                 <h4 className="g_text  max-w-sm translate-y-[100px] opacity-0 md:text-xl">
-                  iPhone 15 Pro is{" "}
+                  iPhone 16 Pro is{" "}
                   <span className="text-white">
-                    the first iPhone to feature an aerospace-grade titanium
-                    design
+                    the first iPhone to feature AI designed titanium
                   </span>
                   , using the same alloy that spacecrafts use for missions to
                   Mars.
@@ -104,7 +104,9 @@ const FeaturesSection = () => {
                 >
                   Titanium has one of the best strength-to-weight ratios of any
                   metal, making these our{" "}
-                  <span className="text-white">lightest Pro models ever. </span>
+                  <span className="text-white">
+                    lightest AI Pro models ever.{" "}
+                  </span>
                   You'll notice the difference the moment you pick one up.
                 </h4>
               </div>

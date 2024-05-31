@@ -30,7 +30,7 @@ export default function HighlightsSection() {
           <h1 id="title" className="">
             Get the highlights.
           </h1>
-          <div className="flex flex-row flex-wrap gap-5 sm:flex-col md:items-end">
+          <div className="flex flex-col flex-wrap gap-5 md:flex-row md:items-end">
             <p className="link">
               Watch the film{" "}
               <Image src={watchImg} alt="watch" className="ml-2" />

@@ -46,13 +46,13 @@ export default function Camera48Section() {
           className="translate-y-20 px-12 pt-16 opacity-0 md:px-0 md:pt-0"
         >
           The 48MP Main camera is more advanced than ever, capturing
-          super-high-resolution photos with a{" "}
-          <b className="text-white">new level of detail and color</b>.<br />
+          super-high-resolution photos with
+          <b className="text-white"> AI powered detail enhancements</b>.<br />
           <br />
-          ;.hu You'll see the improvements in your portraits. And now you no
-          longer have to switch to Portrait mode. If your subject is a person,
-          dog, or cat, iPhone automatically captures depth information. So you
-          can choose to instantly{" "}
+          You'll see the improvements in your portraits. And now you no longer
+          have to switch to Portrait mode. If your subject is a person, dog, or
+          cat, iPhone automatically captures depth information. So you can
+          choose to instantly{" "}
           <b className="text-white">see your photo as a portrait</b>, with an
           artful blur effect. Or later in the Photos app.
         </h4>

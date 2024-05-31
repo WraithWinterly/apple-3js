@@ -50,7 +50,7 @@ const A17ChipSection = () => {
           </h2>
 
           <h3 className="mt-4 text-center">
-            It's here. The biggest redesign in the history of Apple GPUs.
+            GPUs were built up for games. Not just AI.
           </h3>
         </div>
 
