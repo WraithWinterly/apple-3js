@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { heroVideo, smallHeroVideo } from "~/utils";
-import iPhoneHeadlineText from "~/../public/assets/images/iphone-16-pro-headline.png";
+import iPhoneHeadlineText from "~/../public/assets/images/iphone-15-pro-headline.png";
 import Image from "next/image";
 
 export default function HeroSection() {
@@ -48,9 +48,8 @@ export default function HeroSection() {
           width={iPhoneHeadlineText.width}
           height={iPhoneHeadlineText.height}
           alt=""
-          className="mb-4 scale-75 md:scale-110"
+          className="mb-4 scale-75 md:scale-100"
         />
-        {/* <h3 className="text-yellow-800">iPhone 16 Pro</h3> */}
         <div className="w-9/12 md:w-10/12">
           <video
             autoPlay

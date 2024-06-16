@@ -38,14 +38,17 @@ export default function ConnectivitySection() {
       <div className="z-30 mt-10 grid gap-8 md:grid-cols-2 md:gap-24">
         <div className="flex max-w-xs flex-col gap-4">
           <h4 className="">
-            iPhone 16 Pro is the next iPhone to support USB 3 for a{" "}
-            <b className="text-white">phenomenal leap</b> and faster pro
-            workflows than ever before.
+            iPhone 15 Pro is the first iPhone to support USB 3 for a{" "}
+            <b className="text-white">huge leap in data transfer speeds</b> and
+            faster pro workflows than ever before.
           </h4>
           <h4>
-            The USB-C connector now lets you{" "}
-            <b className="text-white">connect to your AI powered devices</b>.
-            Hello connectivity!
+            The new USB-C connector lets you{" "}
+            <b className="text-white">
+              charge your Mac or iPad with the same cable you use to charge
+              iPhone 15 Pro
+            </b>
+            . Bye-bye, cable clutter.
           </h4>
         </div>
         <div className="flex max-w-xs flex-col gap-4">

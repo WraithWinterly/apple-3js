@@ -49,11 +49,11 @@ export default function TelephotoSection() {
         <div className="mt-20 grid justify-center gap-8 md:grid-cols-2 md:gap-36">
           <div className="flex max-w-sm flex-col gap-8 md:gap-8">
             <h4>
-              For iPhone 16 Pro AI Max, we enhanced the 5x Telephoto camera with{" "}
+              For iPhone 15 Pro Max, we designed a 5x Telephoto camera with{" "}
               <b className="text-white">
-                the biggest AI improvement in history
+                the longest optical zoom of any iPhone ever
               </b>{" "}
-              working with our compact Pro camera system.
+              to fit in our compact Pro camera system.
             </h4>
             <h4>
               Now you can{" "}

@@ -20,7 +20,7 @@ export default function PhoneModelSection() {
   }, []);
   const [size, setSize] = useState<string>("small");
   const [model, setModel] = useState({
-    title: "iPhone 16 Pro in Natural Titanium",
+    title: "iPhone 15 Pro in Natural Titanium",
     color: ["#8F8A81", "#ffe7b9", "#6f6c64"],
     img: yellowWallpaperImg,
   });
@@ -148,7 +148,7 @@ export default function PhoneModelSection() {
     <section className="px-0 md:px-20">
       <div>
         <h1 id="heading" className="text-center md:text-start">
-          Take a closer look. It's 3D.
+          Take a closer look.
         </h1>
         {/* Model container */}
         <div className="mt-5 flex flex-col items-center">

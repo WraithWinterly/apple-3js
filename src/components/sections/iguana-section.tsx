@@ -25,11 +25,11 @@ export default function IguanaSection() {
     <section className="relative z-10 mt-52 flex flex-col items-center">
       <div className="flex max-w-sm flex-col md:max-w-5xl ">
         <h2 className=" text-start font-semibold text-white">
-          An AI enhanced camera that captures your wildest imagination.
+          A camera that captures your wildest imagination.
         </h2>
         <h3 className="py-10">
-          From dramatic framing flexibility to next-generation portraits, AI
-          powered photography has never looked this good.
+          From dramatic framing flexibility to next-generation portraits, see
+          what you can do with our most powerful iPhone camera system.
         </h3>
       </div>
       {/* <div className="h-12"></div> */}

@@ -7,10 +7,10 @@ export default function BatteryLifeSection() {
     <>
       <section className="relative mx-auto flex max-w-4xl flex-col items-center md:items-start">
         <h2 className="mx-auto max-w-sm md:mx-0 md:max-w-none">
-          Battery life that's positively Pro. Powered by AI optimization.
+          Battery life that's positively Pro.
         </h2>
         <h3 className="mx-auto max-w-sm pt-6 md:mx-0 md:pt-8">
-          Even with so many advanced AI features, iPhone 16 Pro still gives you
+          Even with so many advanced new features, iPhone 15 Pro still gives you
           amazing all-day battery life.
         </h3>
         <div className="">
@@ -40,7 +40,7 @@ export default function BatteryLifeSection() {
                 <h4 className="text-xl">Up to </h4> <h2>29 hrs</h2>{" "}
                 <h4 className="">
                   video playback on <br />
-                  iPhone 16 Pro Max
+                  iPhone 15 Pro Max
                 </h4>
               </div>
               <div className="max-w-sm">
@@ -48,7 +48,7 @@ export default function BatteryLifeSection() {
                 <h3>Up to </h3> <h2>23 hrs</h2>{" "}
                 <h3>
                   video playback on <br />
-                  iPhone 16 Pro
+                  iPhone 15 Pro
                 </h3>
               </div>
             </div>
@@ -69,11 +69,11 @@ export default function BatteryLifeSection() {
                   />
                   <div className="flex flex-col gap-4 pl-6 pt-11 md:pl-12">
                     <p>
-                      iPhone 16 Pro Max has up to 9 more hours video playback
+                      iPhone 15 Pro Max has up to 9 more hours video playback
                       than iPhone 12 Pro Max
                     </p>
                     <p>
-                      iPhone 16 Pro has up to 6 more hours video playback than
+                      iPhone 15 Pro has up to 6 more hours video playback than
                       iPhone 12 Pro
                     </p>
                   </div>

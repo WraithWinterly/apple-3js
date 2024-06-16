@@ -144,9 +144,13 @@ export default function ActionButtonSection() {
         <div className="flex flex-col items-center">
           <div className="px-4 md:pl-20">
             <p className="mt-72 max-w-sm">
-              It's here. The Action button has been{" "}
-              <b className="text-white"> redefined by AI</b>. It will simply
-              learn which feature you need at which time. It is that simple.
+              The all-new Action button is{" "}
+              <b className="text-white">
+                {" "}
+                a fast track to your favorite feature
+              </b>
+              . Once you set the one you want, just press and hold to launch the
+              action.
             </p>
             <div className="relative mt-24 hidden xl:block">
               <hr className="fade-in relative z-30 mt-12 w-[120%] border-t-gray-border opacity-0"></hr>
@@ -267,13 +271,16 @@ export default function ActionButtonSection() {
             {" "}
             Action button is set to toggle between Ring and Silent modes
           </b>
-          . Once you use your phone more, AI will learn your habits and choose
-          the optimal action.
+          . If you choose a different action, you can use Control Center to mute
+          or use Focus filters to automatically set your iPhone to silent.
         </h4>
         <h4 className="max-w-xs">
           Whatever you're doing, the Action button is at the ready. Launch
           Camera to catch a spontaneous selfie. Record an instant voice memo.
-          <b className="text-white"> You can even ask AI where you are. </b>
+          You can even{" "}
+          <b className="text-white">
+            select Shortcut to open an app or run a series of tasks{" "}
+          </b>
           like switching on the lights in your living room and playing music.
         </h4>
       </div>

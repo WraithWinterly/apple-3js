@@ -21,8 +21,7 @@ import yellowWallpaper from "~/../public/assets/images/three/yellow-wallpaper.jp
 import blueWallpaper from "~/../public/assets/images/three/blue-wallpaper.jpg";
 import whiteWallpaper from "~/../public/assets/images/three/white-wallpaper.jpg";
 import blackWallpaper from "~/../public/assets/images/three/black-wallpaper.jpg";
-// import explore1 from "~/../public/assets/images/explore1.jpg";
-import explore1 from "~/../public/assets/images/ai-processor.jpeg";
+import explore1 from "~/../public/assets/images/explore1.jpg";
 import explore2 from "~/../public/assets/images/explore2.jpg";
 import chip from "~/../public/assets/images/chip.jpeg";
 import frame from "~/../public/assets/images/frame.png";
